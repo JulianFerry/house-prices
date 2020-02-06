@@ -1,0 +1,7 @@
+runtime: python37
+instance_class: F2
+
+#env_variables:
+#  GCS_BUCKET: "house-prices-267107"
+#  GCS_BLOB: "model.joblib"
+#  GOOGLE_APPLICATION_CREDENTIALS: "credentials/house-prices-267107-005a58e1c145.json"
