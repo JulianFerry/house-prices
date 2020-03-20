@@ -1,0 +1,32 @@
+image: python:3.7-slim-buster
+
+# Cache the virtual environment to cache the installed packages
+cache:
+  paths:
+    - .cache/poetry
+    - .venv
+
+stages:
+  - test
+  - build
+
+before_script:
+  - python -V
+  - python get-poetry.py --version 1.0.5 -y
+  - export PATH="$HOME/.poetry/bin:$PATH"
+  - source $HOME/.poetry/env
+  - poetry config virtualenvs.in-project true
+  - poetry install --no-root -v
+
+test:
+  script:
+    - poetry run flake8 src/
+    - poetry run pytest tests/ --cov src/
+
+build:
+  script:
+    - poetry build
+  artifacts:
+    paths:
+      - dist/*.whl
+      - dist/*.tar.gz

@@ -1,17 +1,28 @@
-## User
+# User
+# ----
 
 # Ignore data/ files and folders recursively
-/data/**
 # Exclude subfolders from the ignore rules
-!/data/**/
 # Now we can whitelist .gitkeep in those subfolders
+/data/**
+!/data/**/
 !/data/**/.gitkeep
 
-# GCP credentials 
+# Database for local development
+/db/
+
+# Pickled objects
+*.pkl
+
+# GCP credentials
 app/credentials/
 
+# Other
+/.vscode/
 
-## Python defaults
+
+# Python defaults
+# ---------------
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

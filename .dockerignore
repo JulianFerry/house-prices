@@ -1,0 +1,12 @@
+# Ignore everything
+**
+
+# Keep source code but not pickled objects
+!/src/**
+**.pkl
+
+# Keep files
+!/get-poetry.py
+!/poetry.lock
+!/pyproject.toml
+!/tox.ini
