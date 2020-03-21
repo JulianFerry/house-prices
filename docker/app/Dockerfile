@@ -32,7 +32,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 # Copy source code from repository - flatten the app/ folder structure
 COPY src/app src/database.py src/preprocessing.py src/model.py  /opt/app/
 
-# Copy created models from remote storage (currently from repository)
+# Copy created models from S3 bucket (currently from repository)
 RUN mkdir app/pickle
 COPY pickle/PreProcessor.pkl pickle/Model.pkl  /opt/app/pickle/
 
