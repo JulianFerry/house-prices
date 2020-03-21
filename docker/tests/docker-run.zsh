@@ -9,16 +9,17 @@ gitlab_ci_pre_clone_script="'
     mv $project_name "$project_name"_copy; \
     cp -r "$project_name"_tmp $project_name; \
     cd $project_name; \
+    git clean -xdf; \
     git init; \
     git config --global user.email \"julianferry94@gmail.com\";' "
 
 if docker run --rm -d \
-  --name $project_name-CI \
+  --name $project_name-gitlab-runner \
   -v /var/run/docker.sock:/var/run/docker.sock \
   -v $project_path:/$project_name \
   gitlab/gitlab-runner; then \
-    docker exec $project_name-CI /bin/bash -c " \
-    cd jutils; \
+    docker exec $project_name-gitlab-runner /bin/bash -c " \
+    cd $project_name; \
     gitlab-runner exec docker \
       --pre-clone-script $gitlab_ci_pre_clone_script \
       --docker-privileged \
@@ -26,5 +27,5 @@ if docker run --rm -d \
       --docker-volumes $project_path:/"$project_name"_tmp \
       test;";
 
-  docker stop $project_name-CI
+  docker stop $project_name-gitlab-runner
 fi

@@ -20,4 +20,4 @@ if __name__ == "__main__":
 
     # Save model
     DIR = os.path.abspath(os.path.dirname(__file__))
-    joblib.dump(model, os.path.join(DIR, 'app/pickle/Model.pkl'))
+    joblib.dump(model, os.path.join(DIR, '../pickle/Model.pkl'))

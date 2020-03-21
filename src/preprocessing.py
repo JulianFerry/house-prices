@@ -208,4 +208,4 @@ if __name__ == "__main__":
 
     # Save preprocessed data and fitted preprocessor
     db.save(train_pp, *db_config, 'processed_train')
-    joblib.dump(pp, os.path.join(DIR, 'app/pickle/PreProcessor.pkl'))
+    joblib.dump(pp, os.path.join(DIR, '../pickle/PreProcessor.pkl'))

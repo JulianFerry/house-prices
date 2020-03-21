@@ -12,7 +12,7 @@
 /db/
 
 # Pickled objects
-*.pkl
+pickle/
 
 # GCP credentials
 app/credentials/

@@ -1,9 +1,9 @@
 # Ignore everything
 **
 
-# Keep source code but not pickled objects
+# Keep source code and pickled objects
 !/src/**
-**.pkl
+!/pickle
 
 # Keep files
 !/get-poetry.py

@@ -5,7 +5,7 @@ project_path=$(dirname $(dirname $script_dir));
 project_name=$(basename $project_path);
 image_name=$project_name-app
 
-export DOCKER_BUILDKIT=0
+export DOCKER_BUILDKIT=1
 
 # Stop and remove project container if it exists. Remove image if it exists
 echo "Removing container $image_name and image $image_name"
