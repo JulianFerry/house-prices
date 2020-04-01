@@ -15,21 +15,26 @@ stages:
   - test
   - build
 
+
 test:
   script:
+    # Install poetry
     - python -V
     - python get-poetry.py --version 1.0.5 -y
-    - export PATH="$HOME/.poetry/bin:$PATH"
-    - source $HOME/.poetry/env
-    - poetry config virtualenvs.in-project true
-    - poetry install --no-root -v
+    # Force pip and poetry to install to venv virtualenv
+    - python -m venv .venv
+    - export PATH="$HOME/.poetry/bin:$CI_PROJECT_DIR/.venv/bin:$PATH"
+    - poetry config virtualenvs.create false
+    # Install python packages (dev)
+    - poetry export --dev -f requirements.txt > requirements.txt && \
+    - pip install -U pip && \
+    - pip install -r requirements.txt
+    # Run tests
     - poetry run flake8 src/
     - poetry run pytest tests/ --cov src/
 
 build:
   script:
-    - poetry build
+    - docker info
+    - source docker/app/docker-build
   artifacts:
-    paths:
-      - dist/*.whl
-      - dist/*.tar.gz

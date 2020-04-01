@@ -19,7 +19,7 @@ gitlab_ci_pre_clone_script="'
 if docker run --rm -d \
   --name $project_name-gitlab-runner \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  -v $project_path:/$project_name:ro \
+  -v $project_path:/$project_name \
   gitlab/gitlab-runner; then \
     docker exec $project_name-gitlab-runner /bin/bash -c " \
     cd $project_name; \
@@ -31,4 +31,5 @@ if docker run --rm -d \
       test;";
 
   docker stop $project_name-gitlab-runner
+else exit 1
 fi

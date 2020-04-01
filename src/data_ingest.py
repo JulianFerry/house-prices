@@ -10,6 +10,5 @@ test = pd.read_csv(os.path.join(DIR, '../data/raw/test.csv'))
 
 # Save data to database
 uri, db, _ = database.get_config()
-for schema in ['dev', 'build']:
-    database.save(train, uri, db, schema, 'raw_train')
-    database.save(test, uri, db, schema, 'raw_test')
+database.save(train, uri, db, 'dev', 'raw_train')
+database.save(test, uri, db, 'dev', 'raw_test')

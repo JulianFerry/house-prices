@@ -49,6 +49,7 @@ def load(url, db, schema=None, table=None):
     """
     Load data from database using specified url, db, schema and table name
     """
+
     # Input validation
     if table is None:
         raise 'Table should be specified'
@@ -70,6 +71,9 @@ def load(url, db, schema=None, table=None):
 
 
 def save(data, url, db, schema=None, table=None):
+    """
+    Load data from database using specified url, db, schema and table name
+    """
 
     # Input validation
     if table is None:

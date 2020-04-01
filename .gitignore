@@ -15,7 +15,7 @@
 pickle/
 
 # GCP credentials
-app/credentials/
+**/credentials/**
 
 # Other
 /.vscode/
